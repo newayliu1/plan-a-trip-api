@@ -17,3 +17,15 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+
+User.transaction do
+  User.create!(
+    email: 'wei',
+    password: 'a',
+    password_confirmation: 'a'
+  )
+end
+Trip.transaction do
+  Trip.create!(name: 'Boston',
+                user: User.first)
+end
