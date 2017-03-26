@@ -27,5 +27,16 @@ User.transaction do
 end
 Trip.transaction do
   Trip.create!(name: 'Boston',
-                user: User.first)
+               user: User.first)
+end
+Attraction.transaction do
+  Attraction.create!([{ name: 'Quincy Market',
+                        address: '123 Quincy St. Boston, MA',
+                        time_spend: 120,
+                        trip: Trip.first },
+                      { name: 'Harvard University',
+                        address: '1 Harvard SQ. Boston, MA',
+                        time_spend: 180,
+                        notes: 'Most Important Attraction',
+                        trip: Trip.first }])
 end

@@ -16,12 +16,14 @@ ActiveRecord::Schema.define(version: 20170325195010) do
   enable_extension "plpgsql"
 
   create_table "attractions", force: :cascade do |t|
-    t.string   "name"
-    t.string   "address"
-    t.integer  "time_spend"
+    t.string   "name",       null: false
+    t.string   "address",    null: false
+    t.integer  "time_spend", null: false
     t.string   "notes"
+    t.integer  "trip_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_attractions_on_trip_id", using: :btree
   end
 
   create_table "examples", force: :cascade do |t|
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170325195010) do
     t.index ["token"], name: "index_users_on_token", unique: true, using: :btree
   end
 
+  add_foreign_key "attractions", "trips"
   add_foreign_key "examples", "users"
   add_foreign_key "trips", "users"
 end
