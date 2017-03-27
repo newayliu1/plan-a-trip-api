@@ -1,8 +1,10 @@
 
-# rails-api-template
+# Plan A Trip API
 
 A backedn API for storing and implement trips planing data. Includes authentication.
 
+## ERD
+![ERD][https://cloud.githubusercontent.com/assets/19287350/24368474/8ffbce34-12ee-11e7-9342-62a127bcaf43.JPG]
 
 ## Structure
 
