@@ -41,7 +41,7 @@ class TripsController < ProtectedController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_trip
-    @trip = current_user.trps.find(params[:id])
+    @trip = current_user.trips.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
