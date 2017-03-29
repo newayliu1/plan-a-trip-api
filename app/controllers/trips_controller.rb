@@ -16,7 +16,7 @@ class TripsController < ProtectedController
 
   # POST /trips
   def create
-    @trip = current_user.trips.new(trip_params)
+    @trip = current_user.trips.build(trip_params)
 
     if @trip.save
       render json: @trip, status: :created
