@@ -46,7 +46,7 @@ class AttractionsController < ProtectedController
 
   # Only allow a trusted parameter "white list" through.
   def attraction_params
-    params.require(:attraction).permit(:name, :address, :time_spend, :notes)
+    params.require(:attraction).permit(:name, :address, :time_spend, :notes, :trip_id)
   end
   private :set_attraction, :attraction_params
 end
