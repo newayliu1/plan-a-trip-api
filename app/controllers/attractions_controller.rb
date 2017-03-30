@@ -39,6 +39,16 @@ class AttractionsController < ProtectedController
     @attraction.destroy
   end
 
+  def search
+    @client = GooglePlaces::Client.new(ENV['API_KEY'])
+    @attractions=@client.spots_by_query(search_params[:input])
+    if @attractions
+      render json: @attractions
+    else
+      render json: @attraction.errors, status: :unprocessable_entity
+    end
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_attraction
     @attraction = current_user.attractions.find(params[:id])
@@ -48,5 +58,9 @@ class AttractionsController < ProtectedController
   def attraction_params
     params.require(:attraction).permit(:name, :address, :time_spend, :notes, :trip_id)
   end
-  private :set_attraction, :attraction_params
+
+  def search_params
+    params.require(:location).permit(:input)
+  end
+  private :set_attraction, :attraction_params, :search_params
 end
