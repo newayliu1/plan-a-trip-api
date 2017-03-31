@@ -6,28 +6,10 @@ A backedn API for storing and implement trips planing data. Includes authenticat
 ## ERD
 ![ERD](https://cloud.githubusercontent.com/assets/19287350/24368474/8ffbce34-12ee-11e7-9342-62a127bcaf43.JPG)
 
-## Structure
-
-This template follows the standard project structure in Rails 4.
-
-`curl` command scripts are stored in [`scripts`](scripts) with names that
-correspond to API actions.
-
-User authentication is built-in.
-
-## Tasks
-
-Developers should run these often!
-
--   `bin/rake routes` lists the endpoints available in your API.
--   `bin/rake test` runs automated tests.
--   `bin/rails console` opens a REPL that pre-loads the API.
--   `bin/rails db` opens your database client and loads the correct database.
--   `bin/rails server` starts the API.
--   `scripts/*.sh` run various `curl` commands to test the API. See below.
-
-<!-- TODO -   `rake nag` checks your code style. -->
-<!-- TODO -   `rake lint` checks your code for syntax errors. -->
+## Install Instruction
+```
+bundle install
+```
 
 ## API
 
@@ -38,6 +20,24 @@ built-in user authentication documentation.
 Scripts are included in [`scripts`](scripts) to test built-in actions. Add your
 own scripts to test your custom API. As an alternative, you can write automated
 tests in RSpec to test your API.
+
+### Trip
+| Verb   | URI Pattern      | Controller#Actio |
+|--------|------------------|------------------|
+| GET    | `/trips`         | `trips#index`    |
+| GET    | `/trips/:id`     | `trips#show`     |
+| POST   | `/trips/`        | `trips#create`   |
+| PATCH  | `/trips`         | `trips#update`   |
+| DELETE | `/trips`         | `tripss#delete`  |
+
+### Attraction
+| Verb   | URI Pattern            | Controller#Action      |
+|--------|------------------------|------------------------|
+| GET    | `/attractions`         | `attractions#index`    |
+| GET    | `/attractions/:id`     | `attractions#show`     |
+| POST   | `/attractions/`        | `attractions#create`   |
+| PATCH  | `/attractions`         | `attractions#update`   |
+| DELETE | `/attractions`         | `attractionss#delete`  |
 
 ### Authentication
 
@@ -235,27 +235,14 @@ Content-Type: application/json; charset=utf-8
   }
 }
 ```
+### Approch
+The database struction of this project is not complicate. The database struction like a tree diagram, one user has many trips, and one trip has many attractions. Once the ERD was decided, building out the api did not take me much time. 
 
-### Reset Database without dropping
+### Future Goals
+The next step of this project is implement google map direction API, so that the front end is able to look up the travel time between two attractions.
 
-This is not a task developers should run often, but it is sometimes necessary.
+### Build With
 
-**locally**
-
-```sh
-bin/rake db:migrate VERSION=0
-bin/rake db:migrate db:seed db:examples
-```
-
-**heroku**
-
-```sh
-heroku run rake db:migrate VERSION=0
-heroku run rake db:migrate db:seed db:examples
-```
-
-## [License](LICENSE)
-
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+- ruby
+- Ruby on Rails
+- PostgreSQL
