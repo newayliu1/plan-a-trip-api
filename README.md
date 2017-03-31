@@ -3,6 +3,8 @@
 
 A backedn API for storing and implement trips planing data. Includes authentication.
 
+FRONTEND REPO: https://github.com/newayliu1/plan-a-trip-browser
+
 ## ERD
 ![ERD](https://cloud.githubusercontent.com/assets/19287350/24368474/8ffbce34-12ee-11e7-9342-62a127bcaf43.JPG)
 
@@ -236,7 +238,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 ### Approch
-The database struction of this project is not complicate. The database struction like a tree diagram, one user has many trips, and one trip has many attractions. Once the ERD was decided, building out the api did not take me much time. 
+The database struction of this project is not complicate. The database struction like a tree diagram, one user has many trips, and one trip has many attractions. Once the ERD was decided, building out the api did not take me much time.
 
 ### Future Goals
 The next step of this project is implement google map direction API, so that the front end is able to look up the travel time between two attractions.
